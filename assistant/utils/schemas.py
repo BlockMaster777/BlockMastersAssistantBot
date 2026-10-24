@@ -3,8 +3,10 @@
 MainSchema = [
     {"l": "FaQ",
      "c": "faq"},
-    {"l": "Report something is broken",
+    {"l": "Report an issue",
      "c": "report"},
+    {"l": "Utils",
+     "c": "utils"},
     ]
 
 FAQSchema = [
@@ -17,4 +19,9 @@ FAQSchema = [
     {"l": "Other Bots",
      "a": "*Nope*🥲",
      "c": "other_bots"},
+    ]
+
+UtilsSchema = [
+    {"l": "Generate JWT Secret token",
+     "c": "generate_jwt"},
     ]
