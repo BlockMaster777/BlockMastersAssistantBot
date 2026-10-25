@@ -19,12 +19,7 @@ async def back_to_main(query: aio.types.CallbackQuery):
 
 @rt.callback_query(aio.F.data == "utils:check_dash")
 async def handle_check_dash(query: aio.types.CallbackQuery):
-    status = check_dash_health()
-    if status:
-        message = "✅ DashBlocks services are operational."
-    else:
-        message = "❗DashBlocks services are down."
-    
+    status, message = check_dash_health()
     await query.message.edit_text(message,
                                    reply_markup=back_utils_keyboard)
 

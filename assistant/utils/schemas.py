@@ -31,7 +31,7 @@ UtilsSchema = [
     {"l": "Generate JWT Secret token",
      "c": "generate_key"},
     {"l": "Encode to base 64",
-     "c": "encode_base64"},
+     "c": "encode_b64"},
     {"l": "Decode from base 64",
-     "c": "decode_base64"},
+     "c": "decode_b64"},
     ]

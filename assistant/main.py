@@ -8,7 +8,7 @@ import aiogram.client.telegram
 import os
 import logging
 
-from assistant.routers import faq, general, utils
+from assistant.routers import faq, general, utils, inlines
 
 
 async def main():
@@ -19,7 +19,8 @@ async def main():
     logging.log(logging.INFO, "Registering routers...")
     dp.include_routers(general.rt,
                        faq.rt,
-                       utils.rt)
+                       utils.rt,
+                       inlines.rt)
     
     logging.log(logging.INFO, "Creating bot session...")
     # noinspection argument-list,bad-argument-type

@@ -4,12 +4,19 @@ import os
 import base64
 
 
-def check_dash_health(url: str = "https://dashblocks.org/health") -> bool:
+def check_dash_health(url: str = "https://dashblocks.org/health") \
+        -> tuple[bool, str]:
+    status = False
     try:
         response = requests.get(url)
-        return response.status_code == 200
+        status = response.status_code == 200
     except requests.RequestException:
-        return False
+        status = False
+    if status:
+        message = "✅ DashBlocks services are operational."
+    else:
+        message = "❗DashBlocks services are down."
+    return status, message
 
 
 def generate_secret_key(length: int = 64) -> str:
