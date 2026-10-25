@@ -1,9 +1,8 @@
-# coding=utf8
 import aiogram as aio
 
 rt = aio.Router(name=__name__)
-from assistant.utils.markups import utils_keyboard, back_utils_keyboard
 from assistant.routers.general import main_menu
+from assistant.utils.markups import back_utils_keyboard, utils_keyboard
 from assistant.utils.utils import check_dash_health, generate_secret_key
 
 
@@ -20,7 +19,7 @@ async def back_to_main(query: aio.types.CallbackQuery):
 
 @rt.callback_query(aio.F.data == "utils:check_dash")
 async def handle_check_dash(query: aio.types.CallbackQuery):
-    status, message = check_dash_health()
+    _, message = check_dash_health()
     await query.message.edit_text(message,
                                   reply_markup=back_utils_keyboard)
 

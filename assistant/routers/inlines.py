@@ -1,4 +1,3 @@
-# coding=utf8
 import aiogram as aio
 
 from assistant.utils.utils import check_dash_health

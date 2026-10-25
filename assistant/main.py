@@ -1,7 +1,7 @@
-# coding=utf8
 import asyncio
 import logging
 import os
+import sys
 
 import aiogram as aio
 import aiogram.client.session.aiohttp
@@ -10,37 +10,37 @@ import aiogram.client.telegram
 from assistant.routers import faq, general, inlines, utils
 
 
-async def main_func():
-    logging.log(logging.WARN, "Starting bot...")
-    logging.log(logging.INFO, "Creating DP...")
+async def main_func(log: logging.Logger):
+    log.log(logging.WARNING, "Starting bot...")
+    log.log(logging.INFO, "Creating DP...")
     dp = aio.Dispatcher()
     
-    logging.log(logging.INFO, "Registering routers...")
+    log.log(logging.INFO, "Registering routers...")
     dp.include_routers(general.rt,
                        faq.rt,
                        utils.rt,
                        inlines.rt)
     
-    logging.log(logging.INFO, "Creating bot session...")
+    log.log(logging.INFO, "Creating bot session...")
     # noinspection argument-list,bad-argument-type
     session = aio.client.session.aiohttp.AiohttpSession(
             api=aio.client.telegram.TelegramAPIServer.from_base(
                 os.environ.get("MIRROR_URL")))
     
-    logging.log(logging.INFO, "Creating bot...")
+    log.log(logging.INFO, "Creating bot...")
     # noinspection bad-argument-type
     bot = aio.Bot(token=os.environ.get("BOT_TOKEN"), session=session)
     
-    logging.log(logging.INFO, "Starting polling...")
+    log.log(logging.INFO, "Starting polling...")
     try:
         await dp.start_polling(bot)
     finally:
-        logging.log(logging.WARN, "Closing bot session...")
+        log.log(logging.WARNING, "Closing bot session...")
         await bot.session.close()
-        logging.log(logging.WARN, "Stopping bot...")
-        exit(0)
+        log.log(logging.WARNING, "Stopping bot...")
+        sys.exit(0)
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    asyncio.run(main_func())
+    log = logging.getLogger(__name__)
+    asyncio.run(main_func(log))

@@ -1,4 +1,3 @@
-# coding=utf8
 import aiogram as aio
 from aiogram.filters.command import Command
 

@@ -1,4 +1,3 @@
-# coding=utf8
 import aiogram as aio
 
 from assistant.routers.general import main_menu

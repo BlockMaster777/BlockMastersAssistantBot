@@ -1,4 +1,3 @@
-# coding=utf8
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from assistant.utils.schemas import FAQSchema, MainSchema, UtilsSchema
@@ -7,10 +6,10 @@ from assistant.utils.schemas import FAQSchema, MainSchema, UtilsSchema
 def __keyboard_generator(schema: list[dict[str, str]],
                          prefix: str = "main",
                          add_back_button: bool = True) -> InlineKeyboardMarkup:
-    buttons = list([
+    buttons = [[
                        InlineKeyboardButton(text=el["l"],
                                             callback_data=f"{prefix}:{el['c']}")]
-                   for el in schema)
+                   for el in schema]
     
     buttons.append([
         InlineKeyboardButton(text="Back", callback_data=f"{prefix}:back")]) \
