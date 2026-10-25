@@ -23,5 +23,7 @@ async def handle_faq_topic(query: aio.types.CallbackQuery):
     topic = query.data.split(":")[1]
     for el in FAQSchema:
         if el["c"] == topic:
-            await query.message.edit_text(el["a"], reply_markup=back_faq_keyboard)
+            await query.message.edit_text(el["a"], reply_markup=back_faq_keyboard,
+                                          parse_mode=aio.enums.ParseMode.MARKDOWN_V2,
+                                          disable_web_page_preview=True)
             break
