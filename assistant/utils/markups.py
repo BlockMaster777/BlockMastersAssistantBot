@@ -18,8 +18,19 @@ def __keyboard_generator(schema: list[dict[str, str]],
     return InlineKeyboardMarkup(row_width=1, inline_keyboard=buttons)
 
 
+def __back_button_keyboard(data: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(row_width=1, inline_keyboard=[[
+        InlineKeyboardButton(text="Back", callback_data=data)]])
+
+
 main_keyboard = __keyboard_generator(MainSchema, add_back_button=False)
 
 faq_keyboard = __keyboard_generator(FAQSchema, "faq")
 
 utils_keyboard = __keyboard_generator(UtilsSchema, "utils")
+
+back_faq_keyboard = __back_button_keyboard("main:faq")
+
+back_report_keyboard = __back_button_keyboard("main:report")
+
+back_utils_keyboard = __back_button_keyboard("main:utils")

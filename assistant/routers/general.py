@@ -14,3 +14,8 @@ async def handle_main_menu(message: aio.types.Message):
 
 async def main_menu(message: aio.types.Message):
     await message.edit_text("How can I help you?", reply_markup=main_keyboard)
+
+
+@rt.callback_query(aio.F.data == "main:close")
+async def handle_close(query: aio.types.CallbackQuery):
+    await query.message.delete()
