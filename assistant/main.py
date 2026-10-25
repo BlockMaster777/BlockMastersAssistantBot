@@ -12,6 +12,7 @@ from assistant.routers import faq, general, utils
 
 
 async def main():
+    logging.log(logging.WARN, "Starting bot...")
     logging.log(logging.INFO, "Creating DP...")
     dp = aio.Dispatcher()
     
@@ -30,8 +31,13 @@ async def main():
     bot = aio.Bot(token=os.environ.get("BOT_TOKEN"), session=session)
     
     logging.log(logging.INFO, "Starting polling...")
-    await dp.start_polling(bot)
-
+    try:
+        await dp.start_polling(bot)
+    finally:
+        logging.log(logging.WARN, "Closing bot session...")
+        await bot.session.close()
+        logging.log(logging.WARN, "Stopping bot...")
+        exit(0)
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
