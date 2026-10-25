@@ -11,10 +11,12 @@ MainSchema = [
 
 FAQSchema = [
     {"l": "General Information",
-     "a": "*Github*: https://github.com/BlockMaster777\n"
-          "*Discord*: https://discord.gg/users/1251897007048626236\n"
-          "*BlockServices link*: https://blocksrv.duckdns.org\n"
-          "*DashBlocks link*: https://dashblocks.org\n",
+     "a": "*Github*: <https://github.com/BlockMaster777>\n"
+          "*Telegram*: <https://t.me/BlockMaster777>\n"
+          "*Discord*: <https://discord.gg/users/1251897007048626236>\n"
+          "*Email* <bl0ckmaster@duck.com>\n"
+          "*BlockServices link*: <https://blocksrv.duckdns.org>\n"
+          "*DashBlocks link*: <https://dashblocks.org>\n",
      "c": "general_info"},
     {"l": "Other Bots",
      "a": "*Nope*🥲",
