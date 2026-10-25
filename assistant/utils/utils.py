@@ -4,12 +4,13 @@ import os
 import base64
 
 
-def check_dash_health(url: str = "https://dashblocks.org/health") \
+def check_dash_health(front_url: str = "https://dashblocks.org",
+                      back_url: str = "https://api.dashblocks.org/users/15") \
         -> tuple[bool, str]:
-    status = False
     try:
-        response = requests.get(url)
-        status = response.status_code == 200
+        response1 = requests.get(back_url)
+        response2 = requests.get(front_url)
+        status = response1.status_code == 200 and response2.status_code == 200
     except requests.RequestException:
         status = False
     if status:
