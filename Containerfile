@@ -1,6 +1,6 @@
 FROM ghcr.io/astral-sh/uv:0.13.5-python3.14-trixie
 
-WORKDIR /app
+WORKDIR /
 
 ENV UV_PROJECT_ENVIRONMENT=/app/.venv \
     PYTHONUNBUFFERED=1 \
