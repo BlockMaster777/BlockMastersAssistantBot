@@ -17,15 +17,16 @@ async def back_to_main(query: aio.types.CallbackQuery):
     # noinspection bad-argument-type
     await main_menu(query.message)
 
+
 @rt.callback_query(aio.F.data == "utils:check_dash")
 async def handle_check_dash(query: aio.types.CallbackQuery):
     status, message = check_dash_health()
     await query.message.edit_text(message,
-                                   reply_markup=back_utils_keyboard)
+                                  reply_markup=back_utils_keyboard)
 
 
 @rt.callback_query(aio.F.data == "utils:generate_key")
 async def handle_gen_key(query: aio.types.CallbackQuery):
     await query.message.edit_text(f"Your key is: `{generate_secret_key()}`",
-                                   reply_markup=back_utils_keyboard,
-                                   parse_mode=aio.enums.ParseMode.MARKDOWN_V2)
+                                  reply_markup=back_utils_keyboard,
+                                  parse_mode=aio.enums.ParseMode.MARKDOWN_V2)

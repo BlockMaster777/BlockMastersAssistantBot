@@ -1,14 +1,13 @@
 # coding=utf8
 import asyncio
+import logging
+import os
 
 import aiogram as aio
 import aiogram.client.session.aiohttp
 import aiogram.client.telegram
 
-import os
-import logging
-
-from assistant.routers import faq, general, utils, inlines
+from assistant.routers import faq, general, inlines, utils
 
 
 async def main_func():
@@ -25,7 +24,8 @@ async def main_func():
     logging.log(logging.INFO, "Creating bot session...")
     # noinspection argument-list,bad-argument-type
     session = aio.client.session.aiohttp.AiohttpSession(
-            api=aio.client.telegram.TelegramAPIServer.from_base(os.environ.get("MIRROR_URL")))
+            api=aio.client.telegram.TelegramAPIServer.from_base(
+                os.environ.get("MIRROR_URL")))
     
     logging.log(logging.INFO, "Creating bot...")
     # noinspection bad-argument-type
@@ -39,6 +39,7 @@ async def main_func():
         await bot.session.close()
         logging.log(logging.WARN, "Stopping bot...")
         exit(0)
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
