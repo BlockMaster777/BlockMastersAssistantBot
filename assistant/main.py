@@ -11,7 +11,7 @@ import logging
 from assistant.routers import faq, general, utils, inlines
 
 
-async def main():
+async def main_func():
     logging.log(logging.WARN, "Starting bot...")
     logging.log(logging.INFO, "Creating DP...")
     dp = aio.Dispatcher()
@@ -42,4 +42,4 @@ async def main():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    asyncio.run(main())
+    asyncio.run(main_func())
